@@ -1,0 +1,102 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long long c, i = 1, n, a, cifre = 0, k, b, s = 0, x, y;
+
+int main()
+{
+    ifstream fin("castel.in");
+    ofstream fout("castel.out");
+    
+    fin >> c >> n;
+    
+    if(c == 1)
+    {
+        
+        while(i <= n)
+        {
+            fin >> a;
+            
+            if(a <= 9)
+            {
+                cifre ++;
+            }
+            
+            i ++;
+        }
+        
+        fout << cifre;
+    }
+    
+    else if(c == 2)
+    {
+        k = 1;
+        
+        while((k + 1) * (k + 2) / 2 <= n)
+        {
+            k ++;
+        }
+        
+        fout << k << " ";
+        
+        while(i <= n)
+        {
+            fin >> a;
+            
+            if(i == k * (k + 1) / 2)
+            {
+                fout << a;
+            }
+            
+            i ++;
+        }
+    }
+    
+    else if(c == 3)
+    {
+        k = 1;
+        
+        while((k + 1) * (k + 2) / 2 <= n)
+        {
+            k ++;
+        }
+        
+        fout << k * (k - 1) / 2 << " ";
+        
+        x = 1;
+        
+        int copiek = k;
+        
+        while(i < copiek * (copiek + 1) / 2)
+        {
+            fin >> a;
+            
+            if(x == 1 or x == k)
+            {
+                s += a;
+            }
+            else
+            {
+                s = s + a * 2;
+            }
+            
+            if(x == k)
+            {
+                k --;
+                x = 1;
+            }
+            else
+            {
+                x ++;
+            }
+            
+            
+            i ++;
+        }
+        
+        fout << s;
+    }
+    
+    return 0;
+}
